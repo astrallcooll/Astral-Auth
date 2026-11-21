@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Astral — Anti-Cheat Control Center</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="ambient"></div>
+<main id="app">
+  <section id="login" class="auth-shell">
+    <div class="brand"><div class="logo">✦</div><div><b>ASTRAL</b><small>ANTI-CHEAT CONTROL CENTER</small></div></div>
+    <div class="auth-card">
+      <span class="eyebrow">SECURE DEVELOPER PORTAL</span><h1>Welcome back.</h1><p>Sign in to monitor your games and protect your players.</p>
+      <form id="loginForm"><label>Username<input name="username" autocomplete="username" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="primary">Sign in <span>→</span></button></form>
+      <div class="hint">First time? Create the owner account using the one-time setup instructions in README.md.</div>
+      <div id="loginError" class="error"></div>
+    </div><footer>ASTRAL SECURITY SYSTEMS <span>•</span> CLOUDFLARE EDGE</footer>
+  </section>
+  <section id="dashboard" class="hidden">
+    <aside class="sidebar"><div class="brand"><div class="logo">✦</div><div><b>ASTRAL</b><small>DEVELOPER CONSOLE</small></div></div>
+      <nav><a class="active" href="#overview">▦ &nbsp; Overview</a><a href="#games">◈ &nbsp; Games & integrations</a><a href="#players">◎ &nbsp; Players</a><a href="#events">⌁ &nbsp; Security events</a></nav>
+      <div class="side-bottom"><div class="online"><i></i> API connected</div><button id="logout" class="ghost">↪ Sign out</button></div>
+    </aside>
+    <section class="main">
+      <header><div><span class="eyebrow">SECURITY OVERVIEW</span><h1>Control center</h1><p>Monitor authentication, player activity and security events.</p></div><button id="addGameTop" class="primary compact">＋ Add game</button></header>
+      <div id="noGame" class="empty hidden"><div class="empty-icon">◈</div><h2>Connect your first game</h2><p>Add your PlayFab and Photon configuration to start collecting Astral authentication events.</p><button class="primary" id="addGameEmpty">Configure a game →</button></div>
+      <div id="dashContent" class="hidden">
+        <div class="toolbar"><label>Active game<select id="gameSelect"></select></label><span class="live"><i></i> LIVE DATA · AUTO REFRESH</span></div>
+        <div class="stats"><article><small>REGISTERED PLAYERS</small><strong id="playerCount">—</strong><span>Known PlayFab identities</span></article><article><small>SECURITY EVENTS</small><strong id="eventCount">—</strong><span>Latest 100 events</span></article><article><small>BLOCKED PLAYERS</small><strong id="blockedCount">—</strong><span>Denied future connections</span></article><article><small>AUTH SERVICE</small><strong class="good">ONLINE</strong><span>Cloudflare Worker</span></article></div>
+        <div class="panel"><div class="panel-head"><div><h2>Recent security events</h2><p>Detection and authentication activity</p></div><button class="ghost" id="refresh">↻ Refresh</button></div><div class="table-wrap"><table><thead><tr><th>EVENT</th><th>PLAYFAB ID</th><th>ASTRAL ID</th><th>SEVERITY</th><th>TIME</th></tr></thead><tbody id="eventsTable"><tr><td colspan="5" class="muted">No events yet.</td></tr></tbody></table></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Player directory</h2><p>Identity records and connection restrictions</p></div></div><div class="table-wrap"><table><thead><tr><th>PLAYFAB ID</th><th>ASTRAL ID</th><th>LAST SEEN</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="playersTable"><tr><td colspan="5" class="muted">No players yet.</td></tr></tbody></table></div></div>
+      </div>
+    </section>
+  </section>
+</main>
+<div id="modal" class="modal hidden"><div class="modal-card"><button id="closeModal" class="close">×</button><span class="eyebrow">NEW INTEGRATION</span><h2>Add a game</h2><p>Secrets are encrypted before being stored. Never put these keys in your Unity client.</p>
+<form id="gameForm"><label>Game name<input name="name" placeholder="My VR Game" required></label><label>PlayFab Title ID<input name="playFabTitleId" required></label><label>Photon App ID<input name="photonAppId" required></label><label>PlayFab Developer Secret Key<input name="playFabSecretKey" type="password" required></label><button class="primary">Save game configuration →</button></form><div id="gameError" class="error"></div></div></div>
+<script src="/app.js"></script>
+</body></html>
